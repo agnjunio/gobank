@@ -7,6 +7,14 @@ import (
 	"rsc.io/quote"
 )
 
+func Init() {
+	router := NewApi()
+
+	NewAccounts(router)
+
+	router.Run()
+}
+
 func NewApi() *gin.Engine {
 	router := gin.Default()
 
@@ -17,12 +25,4 @@ func NewApi() *gin.Engine {
 	})
 
 	return router
-}
-
-func Init() {
-	router := NewApi()
-
-	NewAccounts(router)
-
-	router.Run()
 }
