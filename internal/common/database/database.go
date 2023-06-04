@@ -12,13 +12,13 @@ func Init() {
 	db = NewDatabase()
 
 	// Seed the database
-	AddAccount(models.Account{
+	AddAccount(&models.Account{
 		Id:      1,
 		Name:    "Agnaldo Junior",
 		Email:   "agnaldo.junior01@gmail.com",
 		Balance: 1.99,
 	})
-	AddAccount(models.Account{
+	AddAccount(&models.Account{
 		Id:      2,
 		Name:    "Marcos Schuler",
 		Email:   "marbschuler@gmail.com",
