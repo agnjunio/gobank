@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/agnjunio/gobank/api"
-	"github.com/agnjunio/gobank/database"
+	"github.com/agnjunio/gobank/internal/app"
+	"github.com/agnjunio/gobank/internal/common/database"
 )
 
 func main() {
 	database.Init()
-	api.Init()
+	app.Init()
 }

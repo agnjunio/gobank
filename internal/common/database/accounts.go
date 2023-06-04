@@ -1,13 +1,8 @@
 package database
 
-type Account struct {
-	Id      int
-	Name    string
-	Email   string
-	Balance float32
-}
+import "github.com/agnjunio/gobank/internal/common/models"
 
-func AddAccount(account Account) {
+func AddAccount(account models.Account) {
 	if db == nil {
 		panic("DB not initialized")
 	}
@@ -19,12 +14,12 @@ func AddAccount(account Account) {
 	txn.Commit()
 }
 
-func GetAccounts() ([]Account, error) {
+func GetAccounts() ([]models.Account, error) {
 	if db == nil {
 		panic("DB not initialized")
 	}
 
-	var accounts []Account
+	var accounts []models.Account
 
 	txn := db.Txn(false)
 	defer txn.Abort()
@@ -32,7 +27,7 @@ func GetAccounts() ([]Account, error) {
 	it, err := txn.Get("accounts", "id")
 
 	for obj := it.Next(); obj != nil; obj = it.Next() {
-		accounts = append(accounts, obj.(Account))
+		accounts = append(accounts, obj.(models.Account))
 	}
 
 	return accounts, err
